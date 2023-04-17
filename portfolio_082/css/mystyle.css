@@ -1,0 +1,297 @@
+@charset "UTF-8";
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Manrope", 游ゴシック体, YuGothic, 游ゴシック Medium, Yu Gothic Medium, 游ゴシック, Yu Gothic, Hiragino Kaku Gothic Pro, Meiryo, Noto Sans JP, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  display: grid;
+  grid-template-columns: 1.5rem repeat(2, 1fr) 1.5rem;
+  grid-template-rows: [header] 100px [hero] auto [about] auto [flow] auto [price] auto [portfolio] auto [column] auto [contact] auto [footer] auto;
+  row-gap: 30px;
+  column-gap: 15px;
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.section-title {
+  margin: 0 0 30px 0;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.sub-text {
+  margin-top: 0;
+}
+
+.icon-wrapper {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.icon-size {
+  font-size: 2.5em;
+  align-self: center;
+}
+
+body > * {
+  grid-column: 2/-2;
+}
+
+.header {
+  grid-row: header;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  left: 39px;
+  top: 10px;
+}
+.header .page-title {
+  justify-self: start;
+  align-self: center;
+  font-size: 1.75rem;
+}
+.header .hamburger {
+  align-self: center;
+  justify-self: end;
+  cursor: pointer;
+}
+.header .hamburger span {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: #333;
+}
+.header .hamburger span:nth-of-type(2) {
+  margin: 8px 0;
+}
+.header .sp-nav {
+  display: none;
+}
+.header .pc-nav {
+  display: none;
+}
+
+.hero {
+  grid-row: hero;
+  position: relative;
+}
+.hero .copy {
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 0 0 20px 0;
+}
+.hero .main-text {
+  font-weight: normal;
+  font-size: 1.25rem;
+  text-align: left;
+}
+.hero::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 30% 70% 60% 40%/30% 40% 60% 70%;
+  animation: bubble 6s infinite;
+  background-color: #ddd;
+  filter: invert(100%);
+  mix-blend-mode: exclusion;
+  background-size: contain;
+  z-index: -1;
+  top: 60px;
+  left: 0px;
+  width: 200px;
+  height: 200px;
+}
+.hero::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 30% 40% 60% 70%/30% 70% 60% 40%;
+  animation: bubble2 6s infinite;
+  background-color: #d5eae9;
+  filter: invert(100%);
+  mix-blend-mode: exclusion;
+  background-size: contain;
+  z-index: -1;
+  top: 120px;
+  left: 170px;
+  width: 100px;
+  height: 100px;
+}
+
+.about {
+  grid-row: about;
+  text-align: center;
+}
+.about .sub-text {
+  text-align: left;
+}
+.about .skills-item {
+  margin-bottom: 25px;
+}
+.about .skills-item .skills-title {
+  margin-top: 0;
+}
+.about .skills-item .skills-text {
+  text-align: left;
+}
+
+.flow {
+  grid-row: flow;
+}
+
+.price {
+  grid-row: price;
+}
+
+.portfolio {
+  grid-row: portfolio;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 15px;
+}
+.portfolio .section-title {
+  grid-column: 1/-1;
+}
+.portfolio .portfolio-item .portfolio-title {
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+}
+.portfolio .portfolio-item img {
+  max-height: 175px;
+}
+.portfolio .portfolio-item .portfolio-text {
+  font-size: 0.875rem;
+}
+
+.column {
+  grid-row: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 15px;
+}
+.column .section-title {
+  grid-column: 1/-1;
+}
+.column .column-item .column-title {
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+}
+.column .column-item time {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.contact {
+  grid-column: 2/-2;
+  grid-row: contact;
+}
+
+.footer {
+  grid-row: footer;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  body {
+    grid-template-columns: minmax(5%, 20%) repeat(6, 100px) minmax(5%, 20%);
+    column-gap: 15px;
+    row-gap: 60px;
+  }
+  .about .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+  .flow .flow-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+  .portfolio {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: 1280px) {
+  body {
+    grid-template-columns: minmax(5%, 20%) repeat(6, 140px) minmax(5%, 20%);
+    column-gap: 20px;
+    row-gap: 60px;
+  }
+  .about .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+  .flow .flow-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+  .portfolio {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@keyframes bubble {
+  0% {
+    border-radius: 30% 70% 60% 40%/30% 40% 60% 70%;
+  }
+  25% {
+    border-radius: 50% 50% 50% 50%/50% 50% 50% 50%;
+  }
+  50% {
+    border-radius: 70% 30% 30% 70%/50% 70% 30% 50%;
+  }
+  75% {
+    border-radius: 50% 50% 50% 50%/50% 50% 50% 50%;
+  }
+  100% {
+    border-radius: 30% 70% 60% 40%/30% 40% 60% 70%;
+  }
+}
+@keyframes bubble2 {
+  0% {
+    border-radius: 30% 40% 60% 70%/30% 70% 60% 40%;
+  }
+  20% {
+    border-radius: 50% 50% 50% 50%/50% 50% 50% 50%;
+  }
+  40% {
+    border-radius: 50% 70% 30% 50%/70% 30% 30% 70%;
+  }
+  60% {
+    border-radius: 50% 50% 50% 50%/50% 50% 50% 50%;
+  }
+  80% {
+    border-radius: 40% 45% 55% 60%/40% 60% 55% 55%;
+  }
+  100% {
+    border-radius: 30% 40% 60% 70%/30% 70% 60% 40%;
+  }
+}

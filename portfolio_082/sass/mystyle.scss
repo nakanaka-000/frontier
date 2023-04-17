@@ -1,0 +1,343 @@
+@charset "utf-8";
+
+// ::::settings:::: //
+// font-size
+$font-size12: 0.75rem;
+$font-size14: 0.875rem;
+$font-size16: 1rem;
+$font-size20: 1.25rem;
+$font-size24: 1.5rem;
+$font-size28: 1.75rem;
+$font-size48: 3rem;
+// color
+$base-color: #333;
+$sub-folor: #888;
+$bg-color: #f9f9f9;
+
+
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Manrope', 游ゴシック体,YuGothic,游ゴシック Medium,Yu Gothic Medium,游ゴシック,Yu Gothic,Hiragino Kaku Gothic Pro,Meiryo,Noto Sans JP,sans-serif;
+    color: $base-color;
+    background-color: $bg-color;
+    display: grid;
+    grid-template-columns: 1.5rem repeat(2, 1fr) 1.5rem;
+    grid-template-rows: 
+        [header] 100px
+        [hero] auto
+        [about] auto
+        [flow] auto
+        [price] auto
+        [portfolio] auto
+        [column] auto
+        [contact] auto
+        [footer] auto;
+    row-gap: 30px;
+    column-gap: 15px;
+}
+img {
+    width: 100%;
+}
+ul {
+    list-style-type: none;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.section-title {
+    margin: 0 0 30px 0;
+    font-size: $font-size20;
+    text-align: center;
+}
+.sub-text {
+    margin-top: 0;
+}
+.icon-wrapper {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.icon-size {
+    font-size: 2.5em;
+    align-self: center;
+}
+.icon-color {
+
+}
+body > * {
+    grid-column: 2 / -2;
+}
+.header {
+    grid-row: header;
+    display: flex;
+    justify-content: space-between;
+    // sticky headerにするための設定
+    position: sticky;
+    left: 39px;
+    top: 10px;
+    //ここまで
+    .page-title {
+        justify-self: start;
+        align-self: center;
+        font-size: $font-size28;
+    }
+    .hamburger {
+        align-self: center;
+        justify-self: end;
+        cursor: pointer;
+        span {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 1px;
+            background-color: $base-color;
+        }
+        span:nth-of-type(2) {
+            margin: 8px 0;
+        }
+    }
+    .sp-nav {
+        display: none;
+    }
+    .pc-nav {
+        display: none;
+    }
+}
+.hero {
+    grid-row: hero;
+    position: relative;
+    .copy {
+        font-weight: bold;
+        font-size: $font-size48;
+        margin: 0 0 20px 0;
+    }
+    .main-text {
+        font-weight: normal;
+        font-size: $font-size20;
+        text-align: left;
+    }
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 30% 70% 60% 40%/30% 40% 60% 70%;
+        animation: bubble 6s infinite;
+        background-color: #ddd;
+        filter: invert(100%);
+        mix-blend-mode: exclusion;
+        background-size: contain;
+        z-index: -1;
+        top: 60px;
+        left: 0px;
+        width: 200px;
+        height: 200px;
+    }
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-radius: 30% 40% 60% 70%/30% 70% 60% 40%;
+        animation: bubble2 6s infinite;
+        background-color: #d5eae9;
+        filter: invert(100%);
+        mix-blend-mode: exclusion;
+        background-size: contain;
+        z-index: -1;
+        top: 120px;
+        left: 170px;
+        width: 100px;
+        height: 100px;
+    }
+
+}
+.about {
+    grid-row: about;
+    text-align: center;
+    .sub-text {
+        text-align: left;
+    }
+    .skills-item {
+        margin-bottom: 25px;
+        .skills-title {
+            margin-top: 0;
+        }
+        .skills-text {
+            text-align: left;
+        }
+    }
+}
+.flow {
+    grid-row: flow;
+}
+.price {
+    grid-row: price;
+}
+.portfolio {
+    grid-row: portfolio;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 15px;
+    .section-title {
+        grid-column: 1 / -1;
+    }
+    .portfolio-item {
+        .portfolio-title {
+            margin: 10px 0 0 0;
+            font-size: $font-size16;
+        }
+        img {
+            max-height: 175px;
+        }
+        .portfolio-text {
+            font-size: $font-size14;
+        }
+    }
+
+}
+.column {
+    grid-row: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    column-gap: 15px;
+    .section-title {
+        grid-column: 1 / -1;
+    }
+    .column-item {
+        .column-title {
+            margin: 10px 0 0 0;
+            font-size: $font-size16;
+        }
+        time {
+            font-size: $font-size12;
+            color: $sub-folor;
+        }
+    }
+}
+.contact {
+    grid-column: 2 / -2;
+    grid-row: contact;
+}
+.footer {
+    grid-row: footer;
+}
+
+// タブレット
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    body {
+        grid-template-columns: minmax(5%, 20%) repeat(6, 100px) minmax(5%, 20%);
+        column-gap: 15px;
+        row-gap: 60px;
+    }
+    .hero {
+    }    
+    .about {
+        .skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        column-gap: 20px;
+        }  
+    }
+    .flow {
+        .flow-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        column-gap: 20px;
+        }  
+    }
+
+    .portfolio {
+        grid-template-columns: 1fr 1fr 1fr;    
+    }
+    .column {
+        grid-template-columns: 1fr 1fr 1fr;    
+    }
+}
+
+// pcレイアウト
+@media screen and (min-width: 1280px) {
+    body {
+        grid-template-columns: minmax(5%, 20%) repeat(6, 140px) minmax(5%, 20%);
+        column-gap: 20px;
+        row-gap: 60px;
+    }
+    .hero {
+    }    
+    .about {
+        .skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        column-gap: 20px;
+        }  
+    }
+    .flow {
+        .flow-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        column-gap: 20px;
+        }  
+    }
+
+    .portfolio {
+        grid-template-columns: 1fr 1fr 1fr;    
+    }
+    .column {
+        grid-template-columns: 1fr 1fr 1fr;    
+    }
+
+}
+
+//animation
+@keyframes bubble {
+    0% {
+        border-radius: 30% 70% 60% 40%/30% 40% 60% 70%
+    }
+
+    25% {
+        border-radius: 50% 50% 50% 50%/50% 50% 50% 50%
+    }
+
+    50% {
+        border-radius: 70% 30% 30% 70%/50% 70% 30% 50%
+    }
+
+    75% {
+        border-radius: 50% 50% 50% 50%/50% 50% 50% 50%
+    }
+
+    100% {
+        border-radius: 30% 70% 60% 40%/30% 40% 60% 70%
+    }
+}
+@keyframes bubble2 {
+    0% {
+        border-radius: 30% 40% 60% 70%/30% 70% 60% 40%
+    }
+
+    20% {
+        border-radius: 50% 50% 50% 50%/50% 50% 50% 50%
+    }
+
+    40% {
+        border-radius: 50% 70% 30% 50%/70% 30% 30% 70%
+    }
+
+    60% {
+        border-radius: 50% 50% 50% 50%/50% 50% 50% 50%
+    }
+
+    80% {
+        border-radius: 40% 45% 55% 60%/40% 60% 55% 55%
+    }
+    100% {
+        border-radius: 30% 40% 60% 70%/30% 70% 60% 40%
+    }
+}
+
